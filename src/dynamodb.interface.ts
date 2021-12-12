@@ -8,8 +8,13 @@ export interface DynamoDBClass {
   new (...args: any[]): any;
 }
 
+export interface DynamoDBTableAttributes extends Record<string, any> {
+  pk?: string;
+  sk?: string;
+}
+
 export interface DynamoDBClassWithOptions {
-  id?: string;
+  attributes?: DynamoDBTableAttributes;
   dynamoDBClass: DynamoDBClass;
   tableOptions?: CreateTableOptions;
 }

@@ -4,7 +4,10 @@ export const getClassWithOptions = (item: DynamoDBInput): DynamoDBClassWithOptio
   switch (typeof item) {
     case 'function':
       return {
-        id: 'pk',
+        attributes: {
+          pk: 'pk',
+          sk: 'sk',
+        },
         dynamoDBClass: item,
         tableOptions: {
           readCapacityUnits: 5,
